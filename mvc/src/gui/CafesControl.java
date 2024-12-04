@@ -24,11 +24,12 @@ private CafesView cafesview;
 	public void leseAusDatei(String typ){
 	try {
 	if("csv".equals(typ)){
-		cafesmodel.leseAusDatei(typ);
-			cafesview.zeigeInformationsfensterAn("Die Cafes wurden gelesen!");
+		cafesmodel.leseAusCsvDatei(typ);
+			cafesview.zeigeInformationsfensterAn("Die Cafes wurde gelesen!");
 	}
 	else{
-		cafesview.zeigeInformationsfensterAn("Noch nicht implementiert!");
+		cafesmodel.leseAusTxtDatei();
+		cafesview.zeigeInformationsfensterAn("Die Cafes wurde gelesen!");
 	}
 	}
 	catch(IOException exc){
@@ -42,19 +43,16 @@ private CafesView cafesview;
 	}
 	
 	void schreibeCafesInCsvDatei() {
-	try {
-	
-	cafesmodel.schreibeCafesInCsvDatei();;
-	cafesview.zeigeInformationsfensterAn("Die Cafes wurden gespeichert");
+		try {
+			cafesmodel.schreibeCafesInCsvDatei();
+			cafesview.zeigeInformationsfensterAn(
+	   			"Der Tee wurde gespeichert!");
+		}
+		catch(Exception exc){
+			cafesview.zeigeFehlermeldungsfensterAn(
+				"Unbekannter Fehler beim Speichern!");
+		}
 	}
-	catch(IOException exc){
-	cafesview.zeigeFehlermeldungsfensterAn(
-	"IOException beim Speichern!");
-	}
-	catch(Exception exc){
-	cafesview.zeigeFehlermeldungsfensterAn(
-	"Unbekannter Fehler beim Speichern!");
-	}
-	}
+
 
 }

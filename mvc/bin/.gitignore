@@ -1,5 +1,3 @@
-/application/
-/business/
+/fabrikmethode/
 /gui/
-/main/
-/ownUtil/
+/business/
